@@ -70,6 +70,16 @@ export const handleNewProject = reset => ({
   payload: reset,
 });
 
+export const handleLoadProject = load => ({
+  type: types.HANDLE_LOAD_PROJECT,
+  payload: load,
+});
+
+export const handleSaveProject = save => ({
+  type: types.HANDLE_SAVE_PROJECT,
+  payload: save,
+});
+
 // ----------------------------- Query App -------------------------------//
 
 export const createQuery = query => ({

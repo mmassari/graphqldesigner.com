@@ -485,6 +485,20 @@ const reducers = (state = initialState, action) => {
 
       return newState;
 
+    // User clicked New Project
+    case types.HANDLE_LOAD_PROJECT:
+      newState = Object.assign({}, initialState, { projectReset: action.payload });
+      document.getElementById('schemaTab').click();
+
+      return newState;
+
+    // User clicked New Project
+    case types.HANDLE_SAVE_PROJECT:
+      newState = Object.assign({}, initialState, { projectReset: action.payload });
+      document.getElementById('schemaTab').click();
+
+      return newState;
+
     default:
       return state;
   }
