@@ -9,6 +9,7 @@ import './navbar.css';
 // components
 import Team from './team/team-button.jsx';
 import ExportCode from './export-code/export-button.jsx';
+import SaveProject from './save-project/save-button.jsx';
 // import Info from './info/info';
 
 const mapDispatchToProps = dispatch => ({
@@ -23,7 +24,8 @@ const MainNav = ({ handleNewProject, handleLoadProject, handleSaveProject }) => 
       <div id="nav-left">
         <img alt="" id="logo" src="./images/Logo.svg" />
         <FlatButton label="Load Project" onClick={() => handleLoadProject(true)} />
-        <FlatButton label="Save Project" onClick={() => handleSaveProject(true)} />
+        <SaveProject />
+        {/* <FlatButton label="Save Project" onClick={() => handleSaveProject(true)} /> */}
         <FlatButton label="New Project"  onClick={() => handleNewProject(true)} />
         <ExportCode />
       </div>

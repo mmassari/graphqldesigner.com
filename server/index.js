@@ -24,17 +24,33 @@ const buildComponentStyle = require('../utl/create_file_func/create_component_st
 const sqlPool = require('../utl/create_file_func/sql_pool');
 
 const PORT = process.env.PORT || 4100;
-let PATH;
+let PATH, PROJ_PATH;
 
 if (process.env.MODE === 'prod') {
   PATH = '/tmp/';
+  PROJ_PATH = '/projects/'
 } else {
   PATH = path.join(__dirname, '../../');
+  PROJ_PATH = path.join(__dirname, '../../projects/');   
 }
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
+app.post('/save-project', (req,res) => {
+  const dateStamp = Date.now();
+  const filename =  `graphql${dateStamp}.gqlproj`;
+  const file = path.join(PROJ_PATH, filename);
+  fs.writeFileSync(file, req.body);
 
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Content-disposition', 'attachment');
+  res.download(file);
+});
+function sendResponse(dateStamp, res, cb) {
+  zipper.sync.zip(path.join(PATH, `build-files${dateStamp}`)).compress().save(path.join(PATH, `graphql${dateStamp}.zip`));
+
+
+}
 app.post('/write-files', (req, res) => {
   const data = req.body; // data.data is state.tables from schemaReducer. See Navbar component
   const dateStamp = Date.now();

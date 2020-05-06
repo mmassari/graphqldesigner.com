@@ -48,9 +48,11 @@
     "pack": "^2.1.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-loading-overlay": "^1.0.1",
     "react-redux": "^5.0.7",
     "react-transition-group": "^2.4.0",
     "redux": "^4.0.0",
+    "redux-persist": "^6.0.0",
     "regenerator-runtime": "^0.12.1",
     "zip-local": "^0.3.4"
   }
