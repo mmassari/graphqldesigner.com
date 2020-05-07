@@ -27,11 +27,11 @@ const PORT = process.env.PORT || 4100;
 let PATH, PROJ_PATH;
 
 if (process.env.MODE === 'prod') {
-  PATH = '/tmp/';
-  PROJ_PATH = '/projects/'
+  PATH = './tmp/';
+  PROJ_PATH = './projects/'
 } else {
-  PATH = path.join(__dirname, '../../');
-  PROJ_PATH = path.join(__dirname, '../../projects/');   
+  PATH = path.join(__dirname, '../');
+  PROJ_PATH = path.join(__dirname, '../projects/');   
 }
 
 app.use(bodyParser.json());
@@ -40,6 +40,7 @@ app.post('/save-project', (req,res) => {
   const dateStamp = Date.now();
   const filename =  `graphql${dateStamp}.gqlproj`;
   const file = path.join(PROJ_PATH, filename);
+  console.log("file=" + file + ". body=" + JSON.stringify(req.body))
   fs.writeFileSync(file, req.body);
 
   res.setHeader('Content-Type', 'application/json');

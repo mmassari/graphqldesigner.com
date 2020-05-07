@@ -14,7 +14,6 @@ import SaveProject from './save-project/save-button.jsx';
 
 const mapDispatchToProps = dispatch => ({
   handleNewProject: reset => dispatch(actions.handleNewProject(reset)),
-  handleSaveProject: save => dispatch(actions.handleSaveProject(save)),
   handleLoadProject: load => dispatch(actions.handleLoadProject(load)),
 });
 
